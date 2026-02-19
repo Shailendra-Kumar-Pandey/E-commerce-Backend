@@ -1,0 +1,28 @@
+{
+  "name": "e-commerce-backend",
+  "version": "1.0.0",
+  "description": "Practice MERN Stack Development",
+  "homepage": "https://github.com/Shailendra-Kumar-Pandey/E-commerce-Backend#readme",
+  "bugs": {
+    "url": "https://github.com/Shailendra-Kumar-Pandey/E-commerce-Backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shailendra-Kumar-Pandey/E-commerce-Backend.git"
+  },
+  "license": "ISC",
+  "author": "Shailendra Kumar Pandey",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
