@@ -4,7 +4,7 @@ const productInformationSchema = new mongoose.Schema(
     {
         sellerID:{
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'sellerProfile'
+            ref: 'sallerProfile'
         },
         productCategary:{
             type: String,
@@ -40,4 +40,4 @@ const productInformationSchema = new mongoose.Schema(
     }
 )
 
-export default mongoose.model('prodeuctInformation', productInformationSchema)
+export default mongoose.model('productInformation', productInformationSchema)
