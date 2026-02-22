@@ -1,4 +1,6 @@
 import userModel from "../models/User.js";
+import bcrypt from 'bcrypt';
+import { token } from "../utils/ganrateToken.js";
 
 export const registrationController = async ( req, res)=>{
 
@@ -49,7 +51,23 @@ export const loginController = async (req, res)=>{
             return res.status(404).json({massage : "Invailid Email ID... please Try Again..."})
         }
 
-        
+        let isMatch = await bcrypt.compare(password, existUser.password);
+
+        if(!isMatch){
+            return res.status(404).json({massage : "Password Invailid Please Enter Correct Password..."})
+        }
+
+        return res.status(201).json({
+            massage: "LogIN Successfully...",
+            result: {
+                fullName : existUser.fullName,
+                token: token(existUser.email, existUser._id),
+                email: existUser.email,
+                phone: existUser.phone,
+                role: existUser.role,
+            }
+        })
+
 
     } catch (error) {
         return res.status(500).json({massage : `${error}, Sever Error...`})
