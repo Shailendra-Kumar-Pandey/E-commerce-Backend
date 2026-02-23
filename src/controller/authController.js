@@ -10,6 +10,10 @@ export const registrationController = async ( req, res)=>{
         return res.status(404).json({massage : "All Field Required..."})
     };
 
+    if(!email?.includes('@') && !email?.includes('.com')){
+        return res.status(404).json({massage: "Invailid Email ID..."})
+    }
+
     try {
         
         let existUser = await userModel.findOne({email:email})
@@ -42,6 +46,10 @@ export const loginController = async (req, res)=>{
 
     if(!email || !password){
         return res.status(404).json({massage : "All Field Required..."})
+    }
+
+    if(!email?.includes('@') && !email?.includes('.com')){
+        return res.status(404).json({massage: "Invailid Email ID..."})
     }
 
     try {
