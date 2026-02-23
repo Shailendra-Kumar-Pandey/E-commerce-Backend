@@ -1,14 +1,39 @@
-
+import userModel from '../models/User.js';
+import customarModel from '../models/customarProfile.js'
 
 export const compliteProfileController = async (req, res)=>{
 
-    // let {address, pinCode } = req.body
+    let {address, pinCode, imgURL } = req.body
 
-    let userID = req.headers;
+    let userID = req?.headers;
 
-    console.log(userID)
+    if(!address || !pinCode){
+        return res.status(404).json({massage : "All field Required..."})
+    }
 
-    return
-    // if()
+    try {
+        
+        let existUser = await userModel.findById(userID)
+
+        if(!existUser || existUser.role != 'Customar'){
+            return res.status(404).json({massage : "Invailid User ID..."})
+        }
+
+        let compliteData = await customarModel.create({
+            userID: userID,
+            address,
+            pinCode,
+            imgURL
+        })
+
+        return res.status(201).json({
+            massage : `${existUser.fullName}, Profile successfully Completed...`,
+            result: compliteData
+        })
+
+
+    } catch (error) {
+        return res.status(500).json({massage: `${error}, Server Error...`})
+    }
 
 }

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const sallerProfileSchema = new mongoose.Schema(
+const sellerProfileSchema = new mongoose.Schema(
     {
         userId:{
             type: mongoose.Schema.Types.ObjectId,
@@ -13,7 +13,7 @@ const sallerProfileSchema = new mongoose.Schema(
             required:true
         },
         aadharNumber:{
-            type:number,
+            type:Number,
             minlength:12,
             required: true,
         },
@@ -46,4 +46,4 @@ const sallerProfileSchema = new mongoose.Schema(
     }
 )
 
-export default ('sallerProfile', sallerProfileSchema );
+export default mongoose.model('sallerProfile', sellerProfileSchema );

@@ -1,6 +1,7 @@
 import userModel from "../models/User.js";
 import bcrypt from 'bcrypt';
 import { token } from "../utils/ganrateToken.js";
+import sellerProfileModel from '../models/SellerProfile.js' 
 
 export const registrationController = async ( req, res)=>{
 
@@ -63,6 +64,19 @@ export const loginController = async (req, res)=>{
 
         if(!isMatch){
             return res.status(404).json({massage : "Password Invailid Please Enter Correct Password..."})
+        }
+
+        if(existUser.role === 'Seller'){
+
+            let existSeller = await sellerProfileModel.findOne({userId:existUser._id})
+
+            if(!existSeller){
+                return res.status(404).json({massage : "Dear Seller, Please Complete Profile..."})
+            }
+
+            if(existSeller.status != 'Approved'){
+                return res.status(404).json({massage : "Please Contact Admin Penal your Profile not Approved..."})
+            }
         }
 
         return res.status(201).json({
