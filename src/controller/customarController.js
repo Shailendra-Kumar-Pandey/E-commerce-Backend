@@ -1,7 +1,7 @@
 import userModel from '../models/User.js';
 import customarModel from '../models/customarProfile.js'
 
-export const compliteProfileController = async (req, res)=>{
+export const completeProfileController = async (req, res)=>{
 
     let {address, pinCode, imgURL } = req.body
 
@@ -19,7 +19,7 @@ export const compliteProfileController = async (req, res)=>{
             return res.status(404).json({massage : "Invailid User ID..."})
         }
 
-        let compliteData = await customarModel.create({
+        let completeData = await customarModel.create({
             userID: userID,
             address,
             pinCode,
@@ -28,7 +28,7 @@ export const compliteProfileController = async (req, res)=>{
 
         return res.status(201).json({
             massage : `${existUser.fullName}, Profile successfully Completed...`,
-            result: compliteData
+            result: completeData
         })
 
 
