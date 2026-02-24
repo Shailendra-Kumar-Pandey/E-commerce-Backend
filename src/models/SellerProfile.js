@@ -9,7 +9,7 @@ const sellerProfileSchema = new mongoose.Schema(
         panNumber:{
             type:String,
             trim:true,
-            minlength:11,
+            minlength:10,
             required:true
         },
         aadharNumber:{
