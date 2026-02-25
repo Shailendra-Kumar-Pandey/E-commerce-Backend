@@ -37,3 +37,10 @@ export const completeProfileController = async (req, res)=>{
     }
 
 }
+
+// export const addProductController = async (req, res)=>{
+
+//     let { } = req.body;
+
+
+// } 

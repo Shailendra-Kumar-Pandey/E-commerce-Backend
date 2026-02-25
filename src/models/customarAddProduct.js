@@ -6,13 +6,20 @@ const customarAppProductSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref:'customarProfile'
         },
-        productID:{
-            type: mongoose.Schema.Types.ObjectId,
-            ref:'productInformation'
-        },
-        productNumber:{
-            type: Number
-        }
+        addProduct:[
+
+            {
+                productID:{
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref:'productInformation'
+                }
+            },
+            {
+                productNumber:{
+                   type: Number
+                }
+            }
+        ]
     },
     {
         timestamps: true
